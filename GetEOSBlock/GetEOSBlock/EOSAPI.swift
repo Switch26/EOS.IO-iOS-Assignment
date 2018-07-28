@@ -37,12 +37,15 @@ struct Block: Codable {
     var id: String?
     var blockNum: Int
     var refBlockPrefix: Int
+    var inputTransactions: [String]?
+
 }
+
+//https://api.eosnewyork.io/v1/chain/get_abi
 
 struct EOSAPI {
 
     static let current = EOSAPI() // singleton
-    //var chain = Chain(headBlockNum: 0)
     
     // URLS
     private static let basePath = "https://api.eosnewyork.io"
@@ -67,7 +70,6 @@ struct EOSAPI {
             guard let validData = optionalData, optionalError == nil else { return completion(nil, optionalError) }
             let chain = try? EOSAPI.current.decoder.decode(Chain.self, from: validData)
             let apiError = chain == nil ? APIError.parsingJSONError : nil
-            //if chain != nil { EOSAPI.current.chain = chain! }
             return completion(chain, apiError)
         }
     }

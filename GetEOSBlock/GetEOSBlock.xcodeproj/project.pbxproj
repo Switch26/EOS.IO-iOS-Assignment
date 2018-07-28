@@ -14,6 +14,7 @@
 		70454938210C9C520055475A /* GetEOSBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454937210C9C520055475A /* GetEOSBlockTests.swift */; };
 		70454944210C9F5A0055475A /* EOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454943210C9F5A0055475A /* EOSAPI.swift */; };
 		70454946210CACD90055475A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454945210CACD90055475A /* ViewController.swift */; };
+		70454948210CC6550055475A /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454947210CC6550055475A /* CustomDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		70454939210C9C520055475A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70454943210C9F5A0055475A /* EOSAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EOSAPI.swift; path = GetEOSBlock/EOSAPI.swift; sourceTree = SOURCE_ROOT; };
 		70454945210CACD90055475A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		70454947210CC6550055475A /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				70454922210C9C4F0055475A /* AppDelegate.swift */,
 				70454926210C9C4F0055475A /* Main.storyboard */,
 				70454945210CACD90055475A /* ViewController.swift */,
+				70454947210CC6550055475A /* CustomDateFormatter.swift */,
 				70454929210C9C520055475A /* Assets.xcassets */,
 				7045492B210C9C520055475A /* LaunchScreen.storyboard */,
 				7045492E210C9C520055475A /* Info.plist */,
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70454946210CACD90055475A /* ViewController.swift in Sources */,
+				70454948210CC6550055475A /* CustomDateFormatter.swift in Sources */,
 				70454923210C9C4F0055475A /* AppDelegate.swift in Sources */,
 				70454944210C9F5A0055475A /* EOSAPI.swift in Sources */,
 			);

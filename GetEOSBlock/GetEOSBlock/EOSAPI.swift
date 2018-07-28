@@ -6,41 +6,38 @@
 //  Copyright © 2018 Serguei Vinnitskii. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 enum APIError: Error {
-    case networkError(String) // associated value enum
+    case networkError(String)
     case parsingJSONError
-    case serverError(String)
 }
 
 struct Chain: Codable {
     
-//    let serverVersion: String
-//    let chainId: String
+    let serverVersion: String
+    let chainId: String
     let headBlockNum: Int // latest block
-//    let lastIrreversibleBlockNum: Int
-//    let lastIrreversibleBlockId: String
-//    let headBlockId: String
-//    let headBlockProducer: String
+    let lastIrreversibleBlockNum: Int
+    let lastIrreversibleBlockId: String
+    let headBlockId: String
+    let headBlockProducer: String
     
 }
 
 struct Block: Codable {
     
     var previous: String?
-//    var timestamp: Date?
-//    var transactionMerkleRoot: String?
-//    var producer: String?
-//    var producerChanges: [String]?
-//    var producerSignature: String?
-//    var cycles: [String]?
-//    var id: String?
+    var timestamp: Date?
+    var transactionMerkleRoot: String?
+    var producer: String?
+    var producerChanges: [String]?
+    var producerSignature: String?
+    var cycles: [String]?
+    var id: String?
     var blockNum: Int
     var refBlockPrefix: Int
 }
-
-//https://api.eosnewyork.io/v1/chain/get_block --data '{"block_num_or_id" :8157990}'
 
 struct EOSAPI {
 
@@ -58,6 +55,7 @@ struct EOSAPI {
     
     var decoder: JSONDecoder {
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom(customDateFormatter)
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         return decoder
     }
@@ -69,9 +67,18 @@ struct EOSAPI {
             guard let validData = optionalData, optionalError == nil else { return completion(nil, optionalError) }
             let chain = try? EOSAPI.current.decoder.decode(Chain.self, from: validData)
             let apiError = chain == nil ? APIError.parsingJSONError : nil
-            //if chain != nil { self?.chain = chain! }
+            //if chain != nil { EOSAPI.current.chain = chain! }
             return completion(chain, apiError)
         }
+    }
+    
+    private func fetchDataFrom(url: URL, completion:@escaping (Data?, _ optionalError: APIError?) -> ()) {
+        
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { (data, response, error) in
+            completion(data, (error != nil) ? APIError.networkError(error!.localizedDescription) : nil)
+        }
+        task.resume()
     }
     
     func getBlock(numberOrId: String, completion: @escaping (Block?, _ errror: APIError?) -> Void) {
@@ -92,12 +99,5 @@ struct EOSAPI {
         task.resume()
     }
     
-    private func fetchDataFrom(url: URL, completion:@escaping (Data?, _ optionalError: APIError?) -> ()) {
-        
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
-            completion(data, (error != nil) ? APIError.networkError(error!.localizedDescription) : nil)
-        }
-        task.resume()
-    }
+
 }

@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		70454923210C9C4F0055475A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454922210C9C4F0055475A /* AppDelegate.swift */; };
-		70454925210C9C4F0055475A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454924210C9C4F0055475A /* ViewController.swift */; };
 		70454928210C9C4F0055475A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70454926210C9C4F0055475A /* Main.storyboard */; };
 		7045492A210C9C520055475A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70454929210C9C520055475A /* Assets.xcassets */; };
 		7045492D210C9C520055475A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7045492B210C9C520055475A /* LaunchScreen.storyboard */; };
 		70454938210C9C520055475A /* GetEOSBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454937210C9C520055475A /* GetEOSBlockTests.swift */; };
+		70454944210C9F5A0055475A /* EOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454943210C9F5A0055475A /* EOSAPI.swift */; };
+		70454946210CACD90055475A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454945210CACD90055475A /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +29,6 @@
 /* Begin PBXFileReference section */
 		7045491F210C9C4F0055475A /* GetEOSBlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetEOSBlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70454922210C9C4F0055475A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		70454924210C9C4F0055475A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		70454927210C9C4F0055475A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		70454929210C9C520055475A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7045492C210C9C520055475A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +36,8 @@
 		70454933210C9C520055475A /* GetEOSBlockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetEOSBlockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70454937210C9C520055475A /* GetEOSBlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEOSBlockTests.swift; sourceTree = "<group>"; };
 		70454939210C9C520055475A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70454943210C9F5A0055475A /* EOSAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EOSAPI.swift; path = GetEOSBlock/EOSAPI.swift; sourceTree = SOURCE_ROOT; };
+		70454945210CACD90055475A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +79,10 @@
 		70454921210C9C4F0055475A /* GetEOSBlock */ = {
 			isa = PBXGroup;
 			children = (
+				70454942210C9ECA0055475A /* Services */,
 				70454922210C9C4F0055475A /* AppDelegate.swift */,
-				70454924210C9C4F0055475A /* ViewController.swift */,
 				70454926210C9C4F0055475A /* Main.storyboard */,
+				70454945210CACD90055475A /* ViewController.swift */,
 				70454929210C9C520055475A /* Assets.xcassets */,
 				7045492B210C9C520055475A /* LaunchScreen.storyboard */,
 				7045492E210C9C520055475A /* Info.plist */,
@@ -94,6 +97,14 @@
 				70454939210C9C520055475A /* Info.plist */,
 			);
 			path = GetEOSBlockTests;
+			sourceTree = "<group>";
+		};
+		70454942210C9ECA0055475A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				70454943210C9F5A0055475A /* EOSAPI.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +208,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70454925210C9C4F0055475A /* ViewController.swift in Sources */,
+				70454946210CACD90055475A /* ViewController.swift in Sources */,
 				70454923210C9C4F0055475A /* AppDelegate.swift in Sources */,
+				70454944210C9F5A0055475A /* EOSAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

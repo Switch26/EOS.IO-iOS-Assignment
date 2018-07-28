@@ -56,6 +56,10 @@ struct EOSAPI {
         return URL(string: "\(EOSAPI.basePath)/v1/chain/get_block")!
     }
     
+    private func getTransactionHistory() -> URL {
+        return URL(string: "\(EOSAPI.basePath)/v1/history/get_transaction")!
+    }
+    
     var decoder: JSONDecoder {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(customDateFormatter)
@@ -101,5 +105,44 @@ struct EOSAPI {
         task.resume()
     }
     
+    // Quick model to parse JSON using JSONDecoder()
+    struct Transaction: Codable {
+        let trx: Trx?
+    }
+    
+    struct Trx: Codable {
+        let trx: TrxWithinTrx?
+    }
+    
+    struct TrxWithinTrx: Codable {
+        let actions: [Action]?
+    }
+    
+    struct Action: Codable {
+        let account: String?
+    }
+    
+    func getTransactionActions(byId id: String, completion: @escaping ([Action]?, _ errror: APIError?) -> Void) {
 
+        let params = ["id" : id]
+        let session = URLSession(configuration: .default)
+        var request = URLRequest(url: EOSAPI.current.getTransactionHistory())
+        request.httpMethod = "POST"
+        guard let jsonData = try? JSONEncoder().encode(params) else { return completion(nil, APIError.parsingJSONError) }
+        request.httpBody = jsonData
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription))}
+            
+            let transaction = try? EOSAPI.current.decoder.decode(Transaction.self, from: validData)
+            let apiError = transaction?.trx?.trx?.actions == nil ? APIError.parsingJSONError : nil
+            return completion(transaction?.trx?.trx?.actions, apiError)
+        }
+        task.resume()
+    }
+    
+    
+    
+    //let json = try? JSONSerialization.jsonObject(with: validData, options: .mutableContainers)
+    //print("json : \(json)")
 }

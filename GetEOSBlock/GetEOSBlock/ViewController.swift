@@ -13,10 +13,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        EOSAPI.current.updateChain { (chain, error) in
-            print("error: \(error)")
-            print("chain: \(chain)")
+        EOSAPI.current.getChain { (chain, error) in
+//            print("error: \(error)")
+//            print("chain: \(chain)")
+            
+            guard let latestBlockNumber = chain?.headBlockNum else { return }
+            
+            EOSAPI.current.getBlock(numberOrId: String(latestBlockNumber)) { (block, error) in
+                print("error: \(error)")
+                print("block: \(block)")
+            }
         }
+        
+       
     }
 
     override func didReceiveMemoryWarning() {

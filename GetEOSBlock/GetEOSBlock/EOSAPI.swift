@@ -26,6 +26,22 @@ struct Chain: Codable {
     
 }
 
+struct Block: Codable {
+    
+    var previous: String?
+//    var timestamp: Date?
+//    var transactionMerkleRoot: String?
+//    var producer: String?
+//    var producerChanges: [String]?
+//    var producerSignature: String?
+//    var cycles: [String]?
+//    var id: String?
+    var blockNum: Int
+    var refBlockPrefix: Int
+}
+
+//https://api.eosnewyork.io/v1/chain/get_block --data '{"block_num_or_id" :8157990}'
+
 struct EOSAPI {
 
     static let current = EOSAPI() // singleton
@@ -33,8 +49,11 @@ struct EOSAPI {
     
     // URLS
     private static let basePath = "https://api.eosnewyork.io"
-    private func getChainInfo() -> URL {
+    private func getChainURL() -> URL {
         return URL(string: "\(EOSAPI.basePath)/v1/chain/get_info")!
+    }
+    private func getBlockURL() -> URL {
+        return URL(string: "\(EOSAPI.basePath)/v1/chain/get_block")!
     }
     
     var decoder: JSONDecoder {
@@ -44,15 +63,33 @@ struct EOSAPI {
     }
     
     
-    func updateChain(completion: @escaping (Chain?, _ error: APIError?) -> Void) {
+    func getChain(completion: @escaping (Chain?, _ error: APIError?) -> Void) {
         
-        EOSAPI.current.fetchDataFrom(url: EOSAPI.current.getChainInfo()) { optionalData, optionalError in
+        EOSAPI.current.fetchDataFrom(url: EOSAPI.current.getChainURL()) { optionalData, optionalError in
             guard let validData = optionalData, optionalError == nil else { return completion(nil, optionalError) }
             let chain = try? EOSAPI.current.decoder.decode(Chain.self, from: validData)
             let apiError = chain == nil ? APIError.parsingJSONError : nil
             //if chain != nil { self?.chain = chain! }
             return completion(chain, apiError)
         }
+    }
+    
+    func getBlock(numberOrId: String, completion: @escaping (Block?, _ errror: APIError?) -> Void) {
+
+        let params = ["block_num_or_id" : numberOrId]
+        let session = URLSession(configuration: .default)
+        var request = URLRequest(url: EOSAPI.current.getBlockURL())
+        request.httpMethod = "POST"
+        guard let jsonData = try? JSONEncoder().encode(params) else { return completion(nil, APIError.parsingJSONError) }
+        request.httpBody = jsonData
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription))}
+            let block = try? EOSAPI.current.decoder.decode(Block.self, from: validData)
+            let apiError = block == nil ? APIError.parsingJSONError : nil
+            return completion(block, apiError)
+        }
+        task.resume()
     }
     
     private func fetchDataFrom(url: URL, completion:@escaping (Data?, _ optionalError: APIError?) -> ()) {

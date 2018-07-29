@@ -59,7 +59,6 @@ struct Contract: Codable {
     let ricardianContract: String?
 }
 
-//https://api.eosnewyork.io/v1/chain/get_abi
 
 struct EOSAPI {
 
@@ -98,7 +97,7 @@ struct EOSAPI {
         }
     }
     
-    private func fetchDataFrom(url: URL, completion:@escaping (Data?, _ optionalError: APIError?) -> ()) {
+    private func fetchDataFrom(url: URL, completion:@escaping (Data?, _ optionalError: APIError?) -> Void) {
         
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (data, response, error) in
@@ -106,6 +105,22 @@ struct EOSAPI {
         }
         task.resume()
     }
+    
+    private func fetchData(fromURL url: URL, withParameters params: [String: String], completion:@escaping (Data?, _ optionalError: APIError?) -> Void) {
+        
+        let session = URLSession(configuration: .default)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        guard let jsonData = try? JSONEncoder().encode(params) else { return completion(nil, APIError.parsingJSONError) }
+        request.httpBody = jsonData
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription))}
+            return completion(validData, nil)
+        }
+        task.resume()
+    }
+
     
     func getBlock(numberOrId: String, completion: @escaping (Block?, _ errror: APIError?) -> Void) {
 
@@ -138,10 +153,6 @@ struct EOSAPI {
         
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription))}
-            
-//            let json = try? JSONSerialization.jsonObject(with: validData, options: .mutableContainers)
-//            print("json : \(json)")
-            
             let transaction = try? EOSAPI.current.decoder.decode(Transaction.self, from: validData)
             let apiError = transaction?.trx?.trx?.actions == nil ? APIError.parsingJSONError : nil
             return completion(transaction?.trx?.trx?.actions, apiError)
@@ -164,17 +175,11 @@ struct EOSAPI {
         
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription)) }
-            
-//            let json = try? JSONSerialization.jsonObject(with: validData, options: .mutableContainers)
-//            print("json : \(json)")
-            
             let abi = try? EOSAPI.current.decoder.decode(ActionContractResponse.self, from: validData)
-            
             var contract = abi?.abi?.actions?.filter({ $0.name == forAction.name }).first
             contract?.account = forAction.account
             let apiError = contract == nil ? APIError.parsingJSONError : nil
             return completion(contract, apiError)
-            //print("filtered: \(filteredAbiAction)")
 
         }
         task.resume()

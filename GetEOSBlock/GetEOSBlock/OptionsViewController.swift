@@ -1,22 +1,21 @@
 //
-//  ViewController.swift
+//  OptionsViewController.swift
 //  GetEOSBlock
 //
-//  Created by Serguei Vinnitskii on 7/28/18.
+//  Created by Serguei Vinnitskii on 7/29/18.
 //  Copyright © 2018 Serguei Vinnitskii. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class OptionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         EOSAPI.current.getChain { (chain, error) in
-//            print("error: \(error)")
-//            print("chain: \(chain)")
+            //            print("error: \(error)")
+            //            print("chain: \(chain)")
             
             guard let latestBlockNumber = chain?.headBlockNum else { return }
             
@@ -38,24 +37,15 @@ class ViewController: UIViewController {
                 
                 let contracts = EOSAPI.current.renderContractsForActions(contracts: validContracts, actions: validActions)
                 
-//                do {
-//                    let arrayOfContracs = try EOSAPI.current.renderContractsForActions(contracts: validContracts, actions: validActions)
-//                } catch APIError.parsingStringError {
-//                    //handle error
-//                }
+                //                do {
+                //                    let arrayOfContracs = try EOSAPI.current.renderContractsForActions(contracts: validContracts, actions: validActions)
+                //                } catch APIError.parsingStringError {
+                //                    //handle error
+                //                }
                 
                 print("contractText: \(contracts)")
             })
         }
     }
-    
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
 
 }

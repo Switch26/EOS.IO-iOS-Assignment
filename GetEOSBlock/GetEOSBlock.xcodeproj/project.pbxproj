@@ -12,11 +12,11 @@
 		7045492A210C9C520055475A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70454929210C9C520055475A /* Assets.xcassets */; };
 		7045492D210C9C520055475A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7045492B210C9C520055475A /* LaunchScreen.storyboard */; };
 		70454938210C9C520055475A /* GetEOSBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454937210C9C520055475A /* GetEOSBlockTests.swift */; };
-		70454946210CACD90055475A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454945210CACD90055475A /* ViewController.swift */; };
 		70454948210CC6550055475A /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454947210CC6550055475A /* CustomDateFormatter.swift */; };
 		7045494A210DF32F0055475A /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454949210DF32F0055475A /* Chain.swift */; };
 		7045494D210DF35A0055475A /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7045494C210DF35A0055475A /* Block.swift */; };
 		70454953210E04600055475A /* EOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454943210C9F5A0055475A /* EOSAPI.swift */; };
+		70454957210E44920055475A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454956210E44920055475A /* OptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +40,10 @@
 		70454937210C9C520055475A /* GetEOSBlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEOSBlockTests.swift; sourceTree = "<group>"; };
 		70454939210C9C520055475A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70454943210C9F5A0055475A /* EOSAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EOSAPI.swift; path = GetEOSBlock/EOSAPI.swift; sourceTree = SOURCE_ROOT; };
-		70454945210CACD90055475A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		70454947210CC6550055475A /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		70454949210DF32F0055475A /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		7045494C210DF35A0055475A /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		70454956210E44920055475A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +85,11 @@
 		70454921210C9C4F0055475A /* GetEOSBlock */ = {
 			isa = PBXGroup;
 			children = (
+				70454956210E44920055475A /* OptionsViewController.swift */,
 				70454942210C9ECA0055475A /* Services */,
 				7045494B210DF3390055475A /* Model */,
 				70454922210C9C4F0055475A /* AppDelegate.swift */,
 				70454926210C9C4F0055475A /* Main.storyboard */,
-				70454945210CACD90055475A /* ViewController.swift */,
 				70454947210CC6550055475A /* CustomDateFormatter.swift */,
 				70454929210C9C520055475A /* Assets.xcassets */,
 				7045492B210C9C520055475A /* LaunchScreen.storyboard */,
@@ -226,8 +226,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7045494A210DF32F0055475A /* Chain.swift in Sources */,
-				70454946210CACD90055475A /* ViewController.swift in Sources */,
 				70454953210E04600055475A /* EOSAPI.swift in Sources */,
+				70454957210E44920055475A /* OptionsViewController.swift in Sources */,
 				70454948210CC6550055475A /* CustomDateFormatter.swift in Sources */,
 				7045494D210DF35A0055475A /* Block.swift in Sources */,
 				70454923210C9C4F0055475A /* AppDelegate.swift in Sources */,

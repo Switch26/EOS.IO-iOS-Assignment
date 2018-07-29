@@ -13,31 +13,83 @@
         <!--My Options-->
         <scene sceneID="TkL-tb-H8j">
             <objects>
-                <viewController title="My Options" id="rVV-0V-Xfv" customClass="ViewController" customModule="GetEOSBlock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="My Options" id="rVV-0V-Xfv" customClass="OptionsViewController" customModule="GetEOSBlock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oZv-DK-RTK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWF-oG-qIX">
-                                <rect key="frame" x="130" y="164" width="117" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Latest Block"/>
-                                <connections>
-                                    <segue destination="4Vp-og-hL9" kind="show" id="his-9K-z8E"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvH-ST-wKk">
-                                <rect key="frame" x="100" y="421" width="177" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Ricardian Contract"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvH-ST-wKk">
+                                <rect key="frame" x="57" y="238.5" width="262" height="70"/>
+                                <color key="backgroundColor" red="0.12156862745098039" green="0.22745098039215686" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="nFu-tk-7po"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="24" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Ricardian Contract" image="Agreement_Icon"/>
                                 <connections>
                                     <segue destination="PF7-kL-BCG" kind="show" id="Kc3-4j-OsW"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="MIB-5A-15W">
+                                <rect key="frame" x="374" y="150" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWF-oG-qIX">
+                                <rect key="frame" x="56" y="114" width="262" height="70"/>
+                                <color key="backgroundColor" red="0.1138326749" green="0.2281190753" blue="0.30693277720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="4ZR-ec-MKg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="-62" minY="0.0" maxX="12" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="-14" maxY="0.0"/>
+                                <state key="normal" title="Latest Block" image="Bricks_Icon"/>
+                                <connections>
+                                    <segue destination="4Vp-og-hL9" kind="show" id="his-9K-z8E"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKr-th-HOT">
+                                <rect key="frame" x="178.5" y="198" width="19.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GoG-BN-Rir">
+                                <rect key="frame" x="57" y="210.5" width="109.5" height="1"/>
+                                <color key="backgroundColor" red="0.12941176470588237" green="0.22745098039215686" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="E1L-KB-hhD"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eyg-lG-v6d">
+                                <rect key="frame" x="210" y="211" width="109" height="1"/>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.2274509804" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="8hX-Vw-Eip"/>
+                                    <constraint firstAttribute="height" constant="1" id="8jX-hp-atM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WKr-th-HOT" firstAttribute="leading" secondItem="GoG-BN-Rir" secondAttribute="trailing" constant="12" id="63b-Iu-vCH"/>
+                            <constraint firstItem="eyg-lG-v6d" firstAttribute="leading" secondItem="WKr-th-HOT" secondAttribute="trailing" constant="12" id="6fo-Ba-q6R"/>
+                            <constraint firstItem="GoG-BN-Rir" firstAttribute="leading" secondItem="pvH-ST-wKk" secondAttribute="leading" id="9dv-XA-GCD"/>
+                            <constraint firstItem="GoG-BN-Rir" firstAttribute="centerY" secondItem="WKr-th-HOT" secondAttribute="centerY" id="BSU-Sj-8UV"/>
+                            <constraint firstItem="BWF-oG-qIX" firstAttribute="centerX" secondItem="oZv-DK-RTK" secondAttribute="centerX" id="R8J-oJ-npT"/>
+                            <constraint firstItem="WKr-th-HOT" firstAttribute="centerX" secondItem="oZv-DK-RTK" secondAttribute="centerX" id="Rwh-ny-54p"/>
+                            <constraint firstItem="pvH-ST-wKk" firstAttribute="top" secondItem="WKr-th-HOT" secondAttribute="bottom" constant="14" id="Sww-cF-uhP"/>
+                            <constraint firstItem="eyg-lG-v6d" firstAttribute="centerY" secondItem="WKr-th-HOT" secondAttribute="centerY" id="dFo-yS-317"/>
+                            <constraint firstItem="pvH-ST-wKk" firstAttribute="centerX" secondItem="oZv-DK-RTK" secondAttribute="centerX" id="jvV-75-HRx"/>
+                            <constraint firstItem="eyg-lG-v6d" firstAttribute="trailing" secondItem="pvH-ST-wKk" secondAttribute="trailing" id="mXJ-J0-f2l"/>
+                            <constraint firstItem="BWF-oG-qIX" firstAttribute="top" secondItem="KGq-6h-3rJ" secondAttribute="top" constant="50" id="q20-iy-ZHt"/>
+                            <constraint firstItem="WKr-th-HOT" firstAttribute="top" secondItem="BWF-oG-qIX" secondAttribute="bottom" constant="14" id="rpQ-Mx-fUd"/>
+                            <constraint firstItem="BWF-oG-qIX" firstAttribute="width" secondItem="pvH-ST-wKk" secondAttribute="width" id="rsU-6m-I7u"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KGq-6h-3rJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Options" id="Vue-xS-fSg"/>
@@ -185,4 +237,8 @@
             <point key="canvasLocation" x="-306.39999999999998" y="46.326836581709152"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Agreement_Icon" width="41" height="46"/>
+        <image name="Bricks_Icon" width="42" height="51"/>
+    </resources>
 </document>

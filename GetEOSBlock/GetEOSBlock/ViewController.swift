@@ -33,7 +33,7 @@ class ViewController: UIViewController {
             //print("actions: \(actions)")
             
             guard let validActions = actions else { return }
-            self.getContratsFor(actions: validActions, completion: { (contracts, error) in
+            EOSAPI.current.getContratsFor(actions: validActions, completion: { contracts in
                 guard let validContracts = contracts else { return } // throw error
                 
                 let contracts = try? EOSAPI.current.renderContractsForActions(contracts: validContracts, actions: validActions)
@@ -49,21 +49,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func getContratsFor(actions: [Action], completion: @escaping ([Contract]?, _ optionalError: APIError?) -> Void) {
     
-        var contracts: [Contract] = []
-        var attemptNumber = 1
-        actions.forEach { action in
-            EOSAPI.current.getContract(forAction: action, completion: { (contract, error) in
-                
-                if let validContract = contract { contracts.append( validContract ) }
-                if attemptNumber == actions.count {
-                    completion(contracts, nil) // handle error
-                }
-                attemptNumber += 1
-            })
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

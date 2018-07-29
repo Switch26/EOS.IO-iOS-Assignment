@@ -85,8 +85,8 @@ struct EOSAPI {
         task.resume()
     }
 
-    // MARK: External methods
-    func getChain(completion: @escaping (Chain?, _ error: APIError?) -> Void) {
+    // MARK: Public methods
+    public func getChain(completion: @escaping (Chain?, _ error: APIError?) -> Void) {
         
         EOSAPI.current.fetchDataFrom(url: EOSAPI.current.getChainURL()) { optionalData, optionalError in
             guard let validData = optionalData, optionalError == nil else { return completion(nil, optionalError) }
@@ -96,7 +96,7 @@ struct EOSAPI {
         }
     }
     
-    func getBlock(numberOrId: String, completion: @escaping (Block?, _ errror: APIError?) -> Void) {
+    public func getBlock(numberOrId: String, completion: @escaping (Block?, _ errror: APIError?) -> Void) {
 
         guard numberOrId.isEmpty == false else { return completion(nil, APIError.invalidArgument) }
         let params = ["block_num_or_id" : numberOrId]
@@ -109,7 +109,7 @@ struct EOSAPI {
     }
     
 
-    func getTransactionActions(byId id: String, completion: @escaping ([Action]?, _ errror: APIError?) -> Void) {
+    public func getTransactionActions(byId id: String, completion: @escaping ([Action]?, _ errror: APIError?) -> Void) {
 
         guard id.isEmpty == false else { return completion(nil, APIError.invalidArgument) }
         let params = ["id" : id]
@@ -122,7 +122,7 @@ struct EOSAPI {
     }
     
 
-    func getContract(forAction: Action, completion: @escaping (Contract?, _ errror: APIError?) -> Void) {
+    public func getContract(forAction: Action, completion: @escaping (Contract?, _ errror: APIError?) -> Void) {
         
         guard let validName = forAction.account else { return completion(nil, APIError.invalidArgument) }
         let params = ["account_name" : validName]
@@ -136,7 +136,23 @@ struct EOSAPI {
         }
     }
     
-    func renderContractsForActions(contracts: [Contract], actions: [Action]) throws -> [String]? {
+    public func getContratsFor(actions: [Action], completion: @escaping ([Contract]?) -> Void) {
+        
+        var contracts: [Contract] = []
+        var attemptNumber = 1
+        actions.forEach { action in
+            EOSAPI.current.getContract(forAction: action, completion: { (contract, error) in
+                
+                if let validContract = contract { contracts.append( validContract ) }
+                if attemptNumber == actions.count {
+                    completion(contracts)
+                }
+                attemptNumber += 1
+            })
+        }
+    }
+    
+    public func renderContractsForActions(contracts: [Contract], actions: [Action]) throws -> [String]? {
         
         var arrayOfContracts: [String] = []
         do {

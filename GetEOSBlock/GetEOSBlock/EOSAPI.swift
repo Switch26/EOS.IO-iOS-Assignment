@@ -125,19 +125,12 @@ struct EOSAPI {
     func getBlock(numberOrId: String, completion: @escaping (Block?, _ errror: APIError?) -> Void) {
 
         let params = ["block_num_or_id" : numberOrId]
-        let session = URLSession(configuration: .default)
-        var request = URLRequest(url: EOSAPI.current.getBlockURL())
-        request.httpMethod = "POST"
-        guard let jsonData = try? JSONEncoder().encode(params) else { return completion(nil, APIError.parsingJSONError) }
-        request.httpBody = jsonData
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription))}
+        EOSAPI.current.fetchData(fromURL: EOSAPI.current.getBlockURL(), withParameters: params) { (data, error) in
+            guard let validData = data, error == nil else { return completion(nil, error) }
             let block = try? EOSAPI.current.decoder.decode(Block.self, from: validData)
             let apiError = block == nil ? APIError.parsingJSONError : nil
             return completion(block, apiError)
         }
-        task.resume()
     }
     
 

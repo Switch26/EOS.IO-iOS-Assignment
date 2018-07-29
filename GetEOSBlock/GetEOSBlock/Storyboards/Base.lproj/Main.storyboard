@@ -178,10 +178,10 @@
             </objects>
             <point key="canvasLocation" x="1740" y="485.30734632683664"/>
         </scene>
-        <!--Block-->
+        <!--Block Details-->
         <scene sceneID="X4A-xd-Fbz">
             <objects>
-                <viewController title="Block" id="4Vp-og-hL9" sceneMemberID="viewController">
+                <viewController title="Block Details" id="4Vp-og-hL9" customClass="ShowBlockInfoViewController" customModule="GetEOSBlock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xls-QC-kYk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,13 +192,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSK-Sl-cCb">
                                         <rect key="frame" x="0.0" y="0.0" width="87.5" height="42.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.049734666150733346" green="0.097953430709041292" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="#8157990" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyT-0V-71q">
                                         <rect key="frame" x="103.5" y="0.0" width="239.5" height="42.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.049734666150733346" green="0.097953430709041292" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -224,6 +224,10 @@
                         <viewLayoutGuide key="safeArea" id="hOy-qU-d7l"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="blockDetailsTextView" destination="gpJ-HT-bvv" id="rjD-PY-k7N"/>
+                        <outlet property="blockNumberLabel" destination="JyT-0V-71q" id="wQD-ec-gof"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CD4-a3-gOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

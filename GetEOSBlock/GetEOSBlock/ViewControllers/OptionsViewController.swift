@@ -95,8 +95,9 @@ class OptionsViewController: UIViewController {
         
         switch segue.identifier {
         case "showBlockInfo":
-            //if let showBlockInfoVC = segue.destination as?
-            break
+            if let showBlockInfoVC = segue.destination as? ShowBlockInfoViewController, let validBlock = sender as? Block {
+                showBlockInfoVC.block = validBlock
+            }
         default:
             break
         }

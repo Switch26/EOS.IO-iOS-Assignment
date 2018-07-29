@@ -18,6 +18,7 @@
 		70454953210E04600055475A /* EOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454943210C9F5A0055475A /* EOSAPI.swift */; };
 		70454957210E44920055475A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454956210E44920055475A /* OptionsViewController.swift */; };
 		70454959210E55100055475A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454958210E55100055475A /* Extension.swift */; };
+		7045495B210E60250055475A /* ShowBlockInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7045495A210E60250055475A /* ShowBlockInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7045494C210DF35A0055475A /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		70454956210E44920055475A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		70454958210E55100055475A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7045495A210E60250055475A /* ShowBlockInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBlockInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,15 +89,14 @@
 		70454921210C9C4F0055475A /* GetEOSBlock */ = {
 			isa = PBXGroup;
 			children = (
-				70454956210E44920055475A /* OptionsViewController.swift */,
+				7045495C210E602F0055475A /* ViewControllers */,
 				70454942210C9ECA0055475A /* Services */,
 				7045494B210DF3390055475A /* Model */,
 				70454922210C9C4F0055475A /* AppDelegate.swift */,
-				70454926210C9C4F0055475A /* Main.storyboard */,
+				7045495D210E603C0055475A /* Storyboards */,
 				70454947210CC6550055475A /* CustomDateFormatter.swift */,
 				70454958210E55100055475A /* Extension.swift */,
 				70454929210C9C520055475A /* Assets.xcassets */,
-				7045492B210C9C520055475A /* LaunchScreen.storyboard */,
 				7045492E210C9C520055475A /* Info.plist */,
 			);
 			path = GetEOSBlock;
@@ -125,6 +126,24 @@
 				7045494C210DF35A0055475A /* Block.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		7045495C210E602F0055475A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7045495A210E60250055475A /* ShowBlockInfoViewController.swift */,
+				70454956210E44920055475A /* OptionsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7045495D210E603C0055475A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				70454926210C9C4F0055475A /* Main.storyboard */,
+				7045492B210C9C520055475A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7045494A210DF32F0055475A /* Chain.swift in Sources */,
+				7045495B210E60250055475A /* ShowBlockInfoViewController.swift in Sources */,
 				70454953210E04600055475A /* EOSAPI.swift in Sources */,
 				70454959210E55100055475A /* Extension.swift in Sources */,
 				70454957210E44920055475A /* OptionsViewController.swift in Sources */,

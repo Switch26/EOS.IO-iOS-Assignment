@@ -49,6 +49,7 @@
                                 <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="-14" maxY="0.0"/>
                                 <state key="normal" title="Latest Block" image="Bricks_Icon"/>
                                 <connections>
+                                    <action selector="getLatestBlockPressed:" destination="rVV-0V-Xfv" eventType="touchUpInside" id="DqO-Tx-yJC"/>
                                     <segue destination="4Vp-og-hL9" kind="show" id="his-9K-z8E"/>
                                 </connections>
                             </button>
@@ -73,6 +74,9 @@
                                     <constraint firstAttribute="height" constant="1" id="8jX-hp-atM"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="q6E-Ml-dhW">
+                                <rect key="frame" x="283" y="139" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -80,10 +84,12 @@
                             <constraint firstItem="eyg-lG-v6d" firstAttribute="leading" secondItem="WKr-th-HOT" secondAttribute="trailing" constant="12" id="6fo-Ba-q6R"/>
                             <constraint firstItem="GoG-BN-Rir" firstAttribute="leading" secondItem="pvH-ST-wKk" secondAttribute="leading" id="9dv-XA-GCD"/>
                             <constraint firstItem="GoG-BN-Rir" firstAttribute="centerY" secondItem="WKr-th-HOT" secondAttribute="centerY" id="BSU-Sj-8UV"/>
+                            <constraint firstItem="q6E-Ml-dhW" firstAttribute="centerY" secondItem="BWF-oG-qIX" secondAttribute="centerY" id="QXm-3K-dav"/>
                             <constraint firstItem="BWF-oG-qIX" firstAttribute="centerX" secondItem="oZv-DK-RTK" secondAttribute="centerX" id="R8J-oJ-npT"/>
                             <constraint firstItem="WKr-th-HOT" firstAttribute="centerX" secondItem="oZv-DK-RTK" secondAttribute="centerX" id="Rwh-ny-54p"/>
                             <constraint firstItem="pvH-ST-wKk" firstAttribute="top" secondItem="WKr-th-HOT" secondAttribute="bottom" constant="14" id="Sww-cF-uhP"/>
                             <constraint firstItem="eyg-lG-v6d" firstAttribute="centerY" secondItem="WKr-th-HOT" secondAttribute="centerY" id="dFo-yS-317"/>
+                            <constraint firstItem="q6E-Ml-dhW" firstAttribute="leading" secondItem="BWF-oG-qIX" secondAttribute="trailing" constant="-35" id="hym-qn-GaC"/>
                             <constraint firstItem="pvH-ST-wKk" firstAttribute="centerX" secondItem="oZv-DK-RTK" secondAttribute="centerX" id="jvV-75-HRx"/>
                             <constraint firstItem="eyg-lG-v6d" firstAttribute="trailing" secondItem="pvH-ST-wKk" secondAttribute="trailing" id="mXJ-J0-f2l"/>
                             <constraint firstItem="BWF-oG-qIX" firstAttribute="top" secondItem="KGq-6h-3rJ" secondAttribute="top" constant="50" id="q20-iy-ZHt"/>
@@ -93,6 +99,11 @@
                         <viewLayoutGuide key="safeArea" id="KGq-6h-3rJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Options" id="Vue-xS-fSg"/>
+                    <connections>
+                        <outlet property="activityIndicator_latestBlock" destination="q6E-Ml-dhW" id="y1j-j5-8Xi"/>
+                        <outlet property="latestBlockButton" destination="BWF-oG-qIX" id="pc4-6g-84x"/>
+                        <outlet property="ricardianContractButton" destination="pvH-ST-wKk" id="qGr-Oi-UsY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Jl-kr-vfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

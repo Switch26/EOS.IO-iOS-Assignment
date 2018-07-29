@@ -10,8 +10,17 @@ import UIKit
 
 class OptionsViewController: UIViewController {
 
+    @IBOutlet weak var ricardianContractButton: UIButton!
+    @IBOutlet weak var latestBlockButton: UIButton!
+    @IBOutlet weak var activityIndicator_latestBlock: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ricardianContractButton.layer.cornerRadius = 4
+        self.latestBlockButton.layer.cornerRadius = 4
+        
 
         EOSAPI.current.getChain { (chain, error) in
             //            print("error: \(error)")
@@ -47,5 +56,25 @@ class OptionsViewController: UIViewController {
             })
         }
     }
+    
+    @IBAction func getLatestBlockPressed(_ sender: UIButton) {
+        self.activityIndicator_latestBlock.startAnimating()
+        
+        EOSAPI.current.getChain { (chain, error) in
+            
+            guard let latestBlockNumber = chain?.headBlockNum else {
+                DispatchQueue.main.async {
+                    self.activityIndicator_latestBlock.stopAnimating()
+                }
+                return
+            }
+            
+            EOSAPI.current.getBlock(numberOrId: String(latestBlockNumber)) { (block, error) in
+                print("error: \(error)")
+                print("block: \(block)")
+            }
+        }
+    }
+    
 
 }

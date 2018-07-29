@@ -17,6 +17,7 @@
 		7045494D210DF35A0055475A /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7045494C210DF35A0055475A /* Block.swift */; };
 		70454953210E04600055475A /* EOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454943210C9F5A0055475A /* EOSAPI.swift */; };
 		70454957210E44920055475A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454956210E44920055475A /* OptionsViewController.swift */; };
+		70454959210E55100055475A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454958210E55100055475A /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		70454949210DF32F0055475A /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		7045494C210DF35A0055475A /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		70454956210E44920055475A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		70454958210E55100055475A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				70454922210C9C4F0055475A /* AppDelegate.swift */,
 				70454926210C9C4F0055475A /* Main.storyboard */,
 				70454947210CC6550055475A /* CustomDateFormatter.swift */,
+				70454958210E55100055475A /* Extension.swift */,
 				70454929210C9C520055475A /* Assets.xcassets */,
 				7045492B210C9C520055475A /* LaunchScreen.storyboard */,
 				7045492E210C9C520055475A /* Info.plist */,
@@ -227,6 +230,7 @@
 			files = (
 				7045494A210DF32F0055475A /* Chain.swift in Sources */,
 				70454953210E04600055475A /* EOSAPI.swift in Sources */,
+				70454959210E55100055475A /* Extension.swift in Sources */,
 				70454957210E44920055475A /* OptionsViewController.swift in Sources */,
 				70454948210CC6550055475A /* CustomDateFormatter.swift in Sources */,
 				7045494D210DF35A0055475A /* Block.swift in Sources */,

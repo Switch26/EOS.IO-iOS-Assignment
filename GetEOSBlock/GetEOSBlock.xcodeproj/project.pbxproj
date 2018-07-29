@@ -15,6 +15,8 @@
 		70454944210C9F5A0055475A /* EOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454943210C9F5A0055475A /* EOSAPI.swift */; };
 		70454946210CACD90055475A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454945210CACD90055475A /* ViewController.swift */; };
 		70454948210CC6550055475A /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454947210CC6550055475A /* CustomDateFormatter.swift */; };
+		7045494A210DF32F0055475A /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454949210DF32F0055475A /* Chain.swift */; };
+		7045494D210DF35A0055475A /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7045494C210DF35A0055475A /* Block.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		70454943210C9F5A0055475A /* EOSAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EOSAPI.swift; path = GetEOSBlock/EOSAPI.swift; sourceTree = SOURCE_ROOT; };
 		70454945210CACD90055475A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		70454947210CC6550055475A /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
+		70454949210DF32F0055475A /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
+		7045494C210DF35A0055475A /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				70454942210C9ECA0055475A /* Services */,
+				7045494B210DF3390055475A /* Model */,
 				70454922210C9C4F0055475A /* AppDelegate.swift */,
 				70454926210C9C4F0055475A /* Main.storyboard */,
 				70454945210CACD90055475A /* ViewController.swift */,
@@ -108,6 +113,15 @@
 				70454943210C9F5A0055475A /* EOSAPI.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		7045494B210DF3390055475A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				70454949210DF32F0055475A /* Chain.swift */,
+				7045494C210DF35A0055475A /* Block.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,8 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7045494A210DF32F0055475A /* Chain.swift in Sources */,
 				70454946210CACD90055475A /* ViewController.swift in Sources */,
 				70454948210CC6550055475A /* CustomDateFormatter.swift in Sources */,
+				7045494D210DF35A0055475A /* Block.swift in Sources */,
 				70454923210C9C4F0055475A /* AppDelegate.swift in Sources */,
 				70454944210C9F5A0055475A /* EOSAPI.swift in Sources */,
 			);

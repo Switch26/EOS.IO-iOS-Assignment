@@ -29,6 +29,13 @@ class GetEOSBlockTests: XCTestCase {
     let trxId1 = "4d0c96e4dbf6691df87c966cf46fd5f5faa4a29ae12693179317d1c54880a43c" // voter, 1 action
     let trxId2 = "4adb329489fdfdb43213a630e93dd13bf1f21b332efa67b9bd65bc0ca976c1cc" // ram, 3 actions
     let blockNum = "8157990"
+    let action1 = Action(name: "newaccount", account: "eosio")
+    let action2 = Action(name: "buyrambytes", account: "eosio")
+    let contract = Contract(account: "eosio", name: "newaccount", ricardianContract: "The newaccount action creates a new account")
+    
+    override func setUp() {
+        super.setUp()
+    }
 
     
     func testFetchDataFromURL() {
@@ -87,7 +94,7 @@ class GetEOSBlockTests: XCTestCase {
     
     func testGetTransactionActions() {
         
-        let exp = expectation(description: "Got block")
+        let exp = expectation(description: "Got action")
         EOSAPI.current.getTransactionActions(byId: self.trxId1) { actions, error in
             XCTAssertNotNil(actions)
             XCTAssertNil(error)
@@ -98,18 +105,30 @@ class GetEOSBlockTests: XCTestCase {
         }
     }
     
-    
-    
-    
-    
-    func allMethods() {
+    func testGetContractForAction() {
         
-
-//        EOSAPI.current.getContract(forAction: <#T##Action#>, completion: <#T##(Contract?, APIError?) -> Void#>)
-//        EOSAPI.current.getContratsFor(actions: <#T##[Action]#>, completion: <#T##([Contract]?) -> Void#>)
-//        EOSAPI.current.renderContractsForActions(contracts: <#T##[Contract]#>, actions: <#T##[Action]#>)
+        let exp = expectation(description: "Got contract")
+        EOSAPI.current.getContract(forAction: self.action1) { contract, error in
+            XCTAssertNotNil(contract)
+            XCTAssertNil(error)
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5) { error in
+            if error != nil { XCTFail("waitForExpectation timed out with error: \(error!)") }
+        }
+    }
+    
+    func testGetContractsForActions() {
         
-        
+        let exp = expectation(description: "Got array of contracts")
+        EOSAPI.current.getContratsFor(actions: [self.action1, self.action2]) { contracts, error in
+            XCTAssertNotNil(contracts)
+            XCTAssertNil(error)
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5) { error in
+            if error != nil { XCTFail("waitForExpectation timed out with error: \(error!)") }
+        }
     }
     
 }

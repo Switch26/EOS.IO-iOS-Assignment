@@ -33,10 +33,10 @@ class ViewController: UIViewController {
             //print("actions: \(actions)")
             
             guard let validActions = actions else { return }
-            EOSAPI.current.getContratsFor(actions: validActions, completion: { contracts in
+            EOSAPI.current.getContratsFor(actions: validActions, completion: { contracts, error  in
                 guard let validContracts = contracts else { return } // throw error
                 
-                let contracts = try? EOSAPI.current.renderContractsForActions(contracts: validContracts, actions: validActions)
+                let contracts = EOSAPI.current.renderContractsForActions(contracts: validContracts, actions: validActions)
                 
 //                do {
 //                    let arrayOfContracs = try EOSAPI.current.renderContractsForActions(contracts: validContracts, actions: validActions)

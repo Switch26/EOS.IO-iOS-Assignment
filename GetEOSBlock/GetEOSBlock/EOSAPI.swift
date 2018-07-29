@@ -136,34 +136,31 @@ struct EOSAPI {
         }
     }
     
-    public func getContratsFor(actions: [Action], completion: @escaping ([Contract]?) -> Void) {
+    public func getContratsFor(actions: [Action], completion: @escaping ([Contract]?, _ error: APIError?) -> Void) {
         
         var contracts: [Contract] = []
         var attemptNumber = 1
         actions.forEach { action in
             EOSAPI.current.getContract(forAction: action, completion: { (contract, error) in
-                
-                if let validContract = contract { contracts.append( validContract ) }
+                guard let validContract = contract, error == nil else { return completion(contracts, error) }
+                contracts.append(validContract)
                 if attemptNumber == actions.count {
-                    completion(contracts)
+                    completion(contracts, error)
                 }
                 attemptNumber += 1
             })
         }
     }
     
-    public func renderContractsForActions(contracts: [Contract], actions: [Action]) throws -> [String]? {
+    public func renderContractsForActions(contracts: [Contract], actions: [Action]) -> [String]? {
         
         var arrayOfContracts: [String] = []
-        do {
-            try actions.forEach { action in
-                let contract = contracts.filter({ $0.name == action.name && $0.account == action.account }).first?.ricardianContract
-                let editOutPlaceholdersContract = contract?.replacingOccurrences(of: "{{", with: "").replacingOccurrences(of: "}}", with: "")
-                guard let validContractText = editOutPlaceholdersContract else { throw APIError.parsingStringError }
-                arrayOfContracts.append(validContractText)
-            }
-        } catch {
-            throw APIError.parsingStringError
+        
+        let _ = actions.map { action in
+            let contract = contracts.filter({ $0.name == action.name && $0.account == action.account }).first?.ricardianContract
+            let editOutPlaceholdersContract = contract?.replacingOccurrences(of: "{{", with: "").replacingOccurrences(of: "}}", with: "")
+            guard let validContractText = editOutPlaceholdersContract else { return }
+            arrayOfContracts.append(validContractText)
         }
         return arrayOfContracts
     }

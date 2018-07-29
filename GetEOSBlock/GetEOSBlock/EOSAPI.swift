@@ -153,22 +153,14 @@ struct EOSAPI {
         
         guard let validName = forAction.account else { return completion(nil, APIError.invalidArgument) }
         let params = ["account_name" : validName]
-        let session = URLSession(configuration: .default)
-        var request = URLRequest(url: EOSAPI.current.getActionContractURL())
-        request.httpMethod = "POST"
-        guard let jsonData = try? JSONEncoder().encode(params) else { return completion(nil, APIError.parsingJSONError) }
-        request.httpBody = jsonData
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription)) }
+        EOSAPI.current.fetchData(fromURL: EOSAPI.current.getActionContractURL(), withParameters: params) { (data, error) in
+            guard let validData = data, error == nil else { return completion(nil, error) }
             let abi = try? EOSAPI.current.decoder.decode(ActionContractResponse.self, from: validData)
             var contract = abi?.abi?.actions?.filter({ $0.name == forAction.name }).first
             contract?.account = forAction.account
             let apiError = contract == nil ? APIError.parsingJSONError : nil
             return completion(contract, apiError)
-
         }
-        task.resume()
     }
     
     func renderContractsForActions(contracts: [Contract], actions: [Action]) throws -> [String]? {
@@ -186,8 +178,6 @@ struct EOSAPI {
         }
         return arrayOfContracts
     }
-    
-    
     
     //let json = try? JSONSerialization.jsonObject(with: validData, options: .mutableContainers)
     //print("json : \(json)")

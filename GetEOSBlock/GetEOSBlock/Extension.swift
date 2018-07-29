@@ -35,7 +35,7 @@ extension UIViewController {
             self.present(parsingJSONError, animated: true, completion: nil)
             
         default:
-            let networkErrorAlert = UIAlertController.simpleAlert(withTitle: "Error", message: "There was a problem with the server")
+            let networkErrorAlert = UIAlertController.simpleAlert(withTitle: "Error", message: "There was a problem with the app")
             self.present(networkErrorAlert, animated: true, completion: nil)
         }
     }

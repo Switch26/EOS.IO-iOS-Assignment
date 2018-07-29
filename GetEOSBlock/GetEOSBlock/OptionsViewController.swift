@@ -60,21 +60,46 @@ class OptionsViewController: UIViewController {
     @IBAction func getLatestBlockPressed(_ sender: UIButton) {
         self.activityIndicator_latestBlock.startAnimating()
         
+        // 1. Download chain info and look up latest block
         EOSAPI.current.getChain { (chain, error) in
             
-            guard let latestBlockNumber = chain?.headBlockNum else {
+            guard let latestBlockNumber = chain?.headBlockNum, error == nil else {
                 DispatchQueue.main.async {
                     self.activityIndicator_latestBlock.stopAnimating()
+                    self.handleNetworkManagerErrors(error: error!)
                 }
                 return
             }
             
+            //2. Download latest block
             EOSAPI.current.getBlock(numberOrId: String(latestBlockNumber)) { (block, error) in
-                print("error: \(error)")
-                print("block: \(block)")
+                
+                guard let validBlock = block, error == nil else {
+                    DispatchQueue.main.async {
+                        self.activityIndicator_latestBlock.stopAnimating()
+                        self.handleNetworkManagerErrors(error: error!)
+                    }
+                    return
+                }
+                
+                // we have valid block
+                DispatchQueue.main.async {
+                    self.activityIndicator_latestBlock.stopAnimating()
+                    self.performSegue(withIdentifier: "showBlockInfo", sender: validBlock)
+                }
             }
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case "showBlockInfo":
+            //if let showBlockInfoVC = segue.destination as?
+            break
+        default:
+            break
+        }
+    }
 
 }

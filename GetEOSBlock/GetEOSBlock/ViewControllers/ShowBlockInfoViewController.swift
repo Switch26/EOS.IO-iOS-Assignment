@@ -17,6 +17,7 @@ class ShowBlockInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.blockDetailsTextView.text = ""
         if let validBlock = self.block {
             self.blockNumberLabel.text = "#" + "\(validBlock.blockNum)"
             self.blockDetailsTextView.text = self.prepareStringDescription(forBlock: validBlock)

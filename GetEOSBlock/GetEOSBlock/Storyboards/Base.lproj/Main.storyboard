@@ -27,7 +27,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="24" maxY="0.0"/>
-                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="-12" maxY="0.0"/>
                                 <state key="normal" title="Ricardian Contract" image="Agreement_Icon"/>
                                 <connections>
                                     <segue destination="PF7-kL-BCG" kind="show" id="Kc3-4j-OsW"/>
@@ -112,67 +112,91 @@
         <!--Ricardian Contract-->
         <scene sceneID="bga-Z8-L4e">
             <objects>
-                <viewController title="Ricardian Contract" id="PF7-kL-BCG" sceneMemberID="viewController">
+                <viewController title="Ricardian Contract" id="PF7-kL-BCG" customClass="ContractDetailsViewController" customModule="GetEOSBlock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OIa-kp-tnC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter transaction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1R-ra-uib">
-                                <rect key="frame" x="16" y="80" width="343" height="23.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a transaction:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1R-ra-uib">
+                                <rect key="frame" x="16" y="80" width="343" height="38"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lcA-Gx-fRh">
-                                <rect key="frame" x="16" y="119.5" width="343" height="44"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ylh-pb-nPh">
-                                        <rect key="frame" x="0.0" y="0.0" width="259" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="dnL-JQ-PgF"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-Fb-c4Y">
-                                        <rect key="frame" x="275" y="0.0" width="68" height="44"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Check"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBn-28-w6u">
-                                <rect key="frame" x="16" y="171.5" width="142" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Example transaction "/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="transaction #" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ylh-pb-nPh">
+                                <rect key="frame" x="16" y="133.5" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="dnL-JQ-PgF"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-Fb-c4Y">
+                                <rect key="frame" x="123.5" y="193.5" width="128" height="44"/>
+                                <color key="backgroundColor" red="0.1138326749" green="0.2281190753" blue="0.30693277720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="MLO-Ub-Abg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                                <state key="normal" title="Check">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkButtonPressed:" destination="PF7-kL-BCG" eventType="touchUpInside" id="dnH-gi-CmD"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VKD-YX-90f">
-                                <rect key="frame" x="16" y="209" width="343" height="442"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBn-28-w6u">
+                                <rect key="frame" x="16" y="200.5" width="88" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Pre-populate">
+                                    <color key="titleColor" red="0.12848132849999999" green="0.25567191839999998" blue="0.3468518853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="prePopulateButtonPressed:" destination="PF7-kL-BCG" eventType="touchUpInside" id="xNA-pj-uy4"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKD-YX-90f">
+                                <rect key="frame" x="12" y="262.5" width="347" height="404.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xFc-Au-ehR">
+                                <rect key="frame" x="266" y="206" width="20" height="20"/>
+                                <color key="color" red="0.1215686275" green="0.2274509804" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wZf-Fb-c4Y" firstAttribute="centerX" secondItem="OIa-kp-tnC" secondAttribute="centerX" id="49o-ws-YJP"/>
                             <constraint firstItem="w1R-ra-uib" firstAttribute="top" secondItem="z1j-Hr-jJn" secondAttribute="top" constant="16" id="6tL-A2-v6v"/>
-                            <constraint firstItem="VKD-YX-90f" firstAttribute="leading" secondItem="z1j-Hr-jJn" secondAttribute="leading" constant="16" id="AgH-wA-p4T"/>
-                            <constraint firstItem="lcA-Gx-fRh" firstAttribute="leading" secondItem="z1j-Hr-jJn" secondAttribute="leading" constant="16" id="OfS-fW-Oe4"/>
-                            <constraint firstItem="z1j-Hr-jJn" firstAttribute="trailing" secondItem="lcA-Gx-fRh" secondAttribute="trailing" constant="16" id="QWF-EU-eHc"/>
+                            <constraint firstItem="VKD-YX-90f" firstAttribute="leading" secondItem="z1j-Hr-jJn" secondAttribute="leading" constant="12" id="AgH-wA-p4T"/>
+                            <constraint firstItem="iBn-28-w6u" firstAttribute="centerY" secondItem="wZf-Fb-c4Y" secondAttribute="centerY" id="ES4-gg-ktP"/>
+                            <constraint firstItem="xFc-Au-ehR" firstAttribute="centerY" secondItem="wZf-Fb-c4Y" secondAttribute="centerY" id="Plp-Go-dk6"/>
+                            <constraint firstItem="xFc-Au-ehR" firstAttribute="leading" secondItem="wZf-Fb-c4Y" secondAttribute="trailing" constant="14.5" id="TLm-Js-eiH"/>
                             <constraint firstItem="w1R-ra-uib" firstAttribute="leading" secondItem="z1j-Hr-jJn" secondAttribute="leading" constant="16" id="VrH-Kr-lVu"/>
                             <constraint firstItem="z1j-Hr-jJn" firstAttribute="trailing" secondItem="w1R-ra-uib" secondAttribute="trailing" constant="16" id="ZYd-P5-NeE"/>
                             <constraint firstItem="iBn-28-w6u" firstAttribute="leading" secondItem="z1j-Hr-jJn" secondAttribute="leading" constant="16" id="aZB-nx-tVz"/>
-                            <constraint firstItem="iBn-28-w6u" firstAttribute="top" secondItem="lcA-Gx-fRh" secondAttribute="bottom" constant="8" id="nd0-ox-f8J"/>
+                            <constraint firstItem="Ylh-pb-nPh" firstAttribute="leading" secondItem="z1j-Hr-jJn" secondAttribute="leading" constant="16" id="aql-37-ltZ"/>
+                            <constraint firstItem="z1j-Hr-jJn" firstAttribute="trailing" secondItem="Ylh-pb-nPh" secondAttribute="trailing" constant="16" id="fXp-sz-wxA"/>
                             <constraint firstItem="z1j-Hr-jJn" firstAttribute="trailing" secondItem="VKD-YX-90f" secondAttribute="trailing" constant="16" id="pGa-DW-o51"/>
-                            <constraint firstItem="z1j-Hr-jJn" firstAttribute="bottom" secondItem="VKD-YX-90f" secondAttribute="bottom" constant="16" id="t8F-Xs-Ti1"/>
-                            <constraint firstItem="VKD-YX-90f" firstAttribute="top" secondItem="iBn-28-w6u" secondAttribute="bottom" constant="8" id="vS5-Hp-5Hg"/>
-                            <constraint firstItem="lcA-Gx-fRh" firstAttribute="top" secondItem="w1R-ra-uib" secondAttribute="bottom" constant="16" id="zbY-JY-tol"/>
+                            <constraint firstItem="z1j-Hr-jJn" firstAttribute="bottom" secondItem="VKD-YX-90f" secondAttribute="bottom" id="t8F-Xs-Ti1"/>
+                            <constraint firstItem="Ylh-pb-nPh" firstAttribute="top" secondItem="w1R-ra-uib" secondAttribute="bottom" constant="16" id="tYE-2r-SHM"/>
+                            <constraint firstItem="wZf-Fb-c4Y" firstAttribute="top" secondItem="Ylh-pb-nPh" secondAttribute="bottom" constant="16" id="tzX-2c-zys"/>
+                            <constraint firstItem="VKD-YX-90f" firstAttribute="top" secondItem="iBn-28-w6u" secondAttribute="bottom" constant="32" id="vS5-Hp-5Hg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z1j-Hr-jJn"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="xFc-Au-ehR" id="eCH-nq-is1"/>
+                        <outlet property="checkButton" destination="wZf-Fb-c4Y" id="8V5-uq-7HW"/>
+                        <outlet property="contractTextView" destination="VKD-YX-90f" id="Otb-re-0Sl"/>
+                        <outlet property="transactionEntryField" destination="Ylh-pb-nPh" id="3dY-MU-aNi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCA-xb-e5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,8 +227,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gpJ-HT-bvv">
-                                <rect key="frame" x="12" y="175" width="351" height="476"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gpJ-HT-bvv">
+                                <rect key="frame" x="12" y="175" width="351" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -218,7 +242,7 @@
                             <constraint firstItem="hOy-qU-d7l" firstAttribute="trailing" secondItem="Pzf-Qo-cw1" secondAttribute="trailing" constant="16" id="GGT-xu-H2F"/>
                             <constraint firstItem="gpJ-HT-bvv" firstAttribute="top" secondItem="Pzf-Qo-cw1" secondAttribute="bottom" constant="36" id="GU1-YL-Msk"/>
                             <constraint firstItem="gpJ-HT-bvv" firstAttribute="leading" secondItem="hOy-qU-d7l" secondAttribute="leading" constant="12" id="QB1-3d-bFD"/>
-                            <constraint firstItem="hOy-qU-d7l" firstAttribute="bottom" secondItem="gpJ-HT-bvv" secondAttribute="bottom" constant="16" id="UZW-LJ-Q8v"/>
+                            <constraint firstItem="hOy-qU-d7l" firstAttribute="bottom" secondItem="gpJ-HT-bvv" secondAttribute="bottom" id="UZW-LJ-Q8v"/>
                             <constraint firstItem="Pzf-Qo-cw1" firstAttribute="top" secondItem="hOy-qU-d7l" secondAttribute="top" constant="32" id="aZB-cw-uiP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hOy-qU-d7l"/>

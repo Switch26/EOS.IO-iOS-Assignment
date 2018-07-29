@@ -19,6 +19,7 @@
 		70454957210E44920055475A /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454956210E44920055475A /* OptionsViewController.swift */; };
 		70454959210E55100055475A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454958210E55100055475A /* Extension.swift */; };
 		7045495B210E60250055475A /* ShowBlockInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7045495A210E60250055475A /* ShowBlockInfoViewController.swift */; };
+		7045495F210E6EC60055475A /* ContractDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7045495E210E6EC60055475A /* ContractDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		70454956210E44920055475A /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		70454958210E55100055475A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7045495A210E60250055475A /* ShowBlockInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBlockInfoViewController.swift; sourceTree = "<group>"; };
+		7045495E210E6EC60055475A /* ContractDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContractDetailsViewController.swift; path = GetEOSBlock/ContractDetailsViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		7045495C210E602F0055475A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7045495E210E6EC60055475A /* ContractDetailsViewController.swift */,
 				7045495A210E60250055475A /* ShowBlockInfoViewController.swift */,
 				70454956210E44920055475A /* OptionsViewController.swift */,
 			);
@@ -247,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7045495F210E6EC60055475A /* ContractDetailsViewController.swift in Sources */,
 				7045494A210DF32F0055475A /* Chain.swift in Sources */,
 				7045495B210E60250055475A /* ShowBlockInfoViewController.swift in Sources */,
 				70454953210E04600055475A /* EOSAPI.swift in Sources */,

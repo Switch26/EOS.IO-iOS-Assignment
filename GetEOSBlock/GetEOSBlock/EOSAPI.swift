@@ -12,6 +12,7 @@ enum APIError: Error {
     case networkError(String)
     case parsingJSONError
     case parsingStringError
+    case invalidArgument
 }
 
 struct Chain: Codable {
@@ -124,6 +125,7 @@ struct EOSAPI {
     
     func getBlock(numberOrId: String, completion: @escaping (Block?, _ errror: APIError?) -> Void) {
 
+        guard numberOrId.isEmpty == false else { return completion(nil, APIError.invalidArgument) }
         let params = ["block_num_or_id" : numberOrId]
         EOSAPI.current.fetchData(fromURL: EOSAPI.current.getBlockURL(), withParameters: params) { (data, error) in
             guard let validData = data, error == nil else { return completion(nil, error) }
@@ -134,31 +136,22 @@ struct EOSAPI {
     }
     
 
-    
     func getTransactionActions(byId id: String, completion: @escaping ([Action]?, _ errror: APIError?) -> Void) {
 
+        guard id.isEmpty == false else { return completion(nil, APIError.invalidArgument) }
         let params = ["id" : id]
-        let session = URLSession(configuration: .default)
-        var request = URLRequest(url: EOSAPI.current.getTransactionHistoryURL())
-        request.httpMethod = "POST"
-        guard let jsonData = try? JSONEncoder().encode(params) else { return completion(nil, APIError.parsingJSONError) }
-        request.httpBody = jsonData
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription))}
+        EOSAPI.current.fetchData(fromURL: EOSAPI.current.getTransactionHistoryURL(), withParameters: params) { (data, error) in
+            guard let validData = data, error == nil else { return completion(nil, error) }
             let transaction = try? EOSAPI.current.decoder.decode(Transaction.self, from: validData)
             let apiError = transaction?.trx?.trx?.actions == nil ? APIError.parsingJSONError : nil
             return completion(transaction?.trx?.trx?.actions, apiError)
         }
-        task.resume()
     }
     
 
-    
-    
     func getContract(forAction: Action, completion: @escaping (Contract?, _ errror: APIError?) -> Void) {
         
-        guard let validName = forAction.account else { return }
+        guard let validName = forAction.account else { return completion(nil, APIError.invalidArgument) }
         let params = ["account_name" : validName]
         let session = URLSession(configuration: .default)
         var request = URLRequest(url: EOSAPI.current.getActionContractURL())

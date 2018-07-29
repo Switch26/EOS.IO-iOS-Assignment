@@ -26,12 +26,43 @@ class ViewController: UIViewController {
             }
         }*/
         
-        let trxId = "4d0c96e4dbf6691df87c966cf46fd5f5faa4a29ae12693179317d1c54880a43c"
-        EOSAPI.current.getTransactionActions(byId: trxId) { (actions, error) in
-            let account = actions?.first?.account
-            print("account: \(account)")
+        let trxId = "4d0c96e4dbf6691df87c966cf46fd5f5faa4a29ae12693179317d1c54880a43c" // voter, 1 action
+        let trxId2 = "4adb329489fdfdb43213a630e93dd13bf1f21b332efa67b9bd65bc0ca976c1cc" // ram, 3 actions
+        EOSAPI.current.getTransactionActions(byId: trxId2) { (actions, error) in
+            
+            //print("actions: \(actions)")
+            
+            guard let validActions = actions else { return }
+            self.getContratsFor(actions: validActions, completion: { (contracts, error) in
+                guard let validContracts = contracts else { return } // throw error
+                
+                let contracts = try? EOSAPI.current.renderContractsForActions(contracts: validContracts, actions: validActions)
+                
+//                do {
+//                    let arrayOfContracs = try EOSAPI.current.renderContractsForActions(contracts: validContracts, actions: validActions)
+//                } catch APIError.parsingStringError {
+//                    //handle error
+//                }
+                
+                print("contractText: \(contracts)")
+            })
         }
-       
+    }
+    
+    func getContratsFor(actions: [Action], completion: @escaping ([Contract]?, _ optionalError: APIError?) -> Void) {
+    
+        var contracts: [Contract] = []
+        var attemptNumber = 1
+        actions.forEach { action in
+            EOSAPI.current.getContract(forAction: action, completion: { (contract, error) in
+                
+                if let validContract = contract { contracts.append( validContract ) }
+                if attemptNumber == actions.count {
+                    completion(contracts, nil) // handle error
+                }
+                attemptNumber += 1
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {

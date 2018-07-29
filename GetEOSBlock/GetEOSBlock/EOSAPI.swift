@@ -11,6 +11,7 @@ import Foundation
 enum APIError: Error {
     case networkError(String)
     case parsingJSONError
+    case parsingStringError
 }
 
 struct Chain: Codable {
@@ -41,6 +42,23 @@ struct Block: Codable {
 
 }
 
+// Quick model to parse JSON using JSONDecoder()
+struct Transaction: Codable { let trx: Trx? }
+struct Trx: Codable { let trx: TrxWithinTrx? }
+struct TrxWithinTrx: Codable { let actions: [Action]? }
+struct Action: Codable {
+    let name: String?
+    let account: String?
+}
+
+struct ActionContractResponse: Codable { let abi: Abi? }
+struct Abi: Codable { let actions: [Contract]?}
+struct Contract: Codable {
+    var account: String?
+    let name: String?
+    let ricardianContract: String?
+}
+
 //https://api.eosnewyork.io/v1/chain/get_abi
 
 struct EOSAPI {
@@ -55,9 +73,11 @@ struct EOSAPI {
     private func getBlockURL() -> URL {
         return URL(string: "\(EOSAPI.basePath)/v1/chain/get_block")!
     }
-    
-    private func getTransactionHistory() -> URL {
+    private func getTransactionHistoryURL() -> URL {
         return URL(string: "\(EOSAPI.basePath)/v1/history/get_transaction")!
+    }
+    private func getActionContractURL() -> URL {
+        return URL(string: "\(EOSAPI.basePath)/v1/chain/get_abi")!
     }
     
     var decoder: JSONDecoder {
@@ -105,28 +125,13 @@ struct EOSAPI {
         task.resume()
     }
     
-    // Quick model to parse JSON using JSONDecoder()
-    struct Transaction: Codable {
-        let trx: Trx?
-    }
-    
-    struct Trx: Codable {
-        let trx: TrxWithinTrx?
-    }
-    
-    struct TrxWithinTrx: Codable {
-        let actions: [Action]?
-    }
-    
-    struct Action: Codable {
-        let account: String?
-    }
+
     
     func getTransactionActions(byId id: String, completion: @escaping ([Action]?, _ errror: APIError?) -> Void) {
 
         let params = ["id" : id]
         let session = URLSession(configuration: .default)
-        var request = URLRequest(url: EOSAPI.current.getTransactionHistory())
+        var request = URLRequest(url: EOSAPI.current.getTransactionHistoryURL())
         request.httpMethod = "POST"
         guard let jsonData = try? JSONEncoder().encode(params) else { return completion(nil, APIError.parsingJSONError) }
         request.httpBody = jsonData
@@ -134,11 +139,61 @@ struct EOSAPI {
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription))}
             
+//            let json = try? JSONSerialization.jsonObject(with: validData, options: .mutableContainers)
+//            print("json : \(json)")
+            
             let transaction = try? EOSAPI.current.decoder.decode(Transaction.self, from: validData)
             let apiError = transaction?.trx?.trx?.actions == nil ? APIError.parsingJSONError : nil
             return completion(transaction?.trx?.trx?.actions, apiError)
         }
         task.resume()
+    }
+    
+
+    
+    
+    func getContract(forAction: Action, completion: @escaping (Contract?, _ errror: APIError?) -> Void) {
+        
+        guard let validName = forAction.account else { return }
+        let params = ["account_name" : validName]
+        let session = URLSession(configuration: .default)
+        var request = URLRequest(url: EOSAPI.current.getActionContractURL())
+        request.httpMethod = "POST"
+        guard let jsonData = try? JSONEncoder().encode(params) else { return completion(nil, APIError.parsingJSONError) }
+        request.httpBody = jsonData
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let validData = data, error == nil else { return completion(nil, APIError.networkError(error.debugDescription)) }
+            
+//            let json = try? JSONSerialization.jsonObject(with: validData, options: .mutableContainers)
+//            print("json : \(json)")
+            
+            let abi = try? EOSAPI.current.decoder.decode(ActionContractResponse.self, from: validData)
+            
+            var contract = abi?.abi?.actions?.filter({ $0.name == forAction.name }).first
+            contract?.account = forAction.account
+            let apiError = contract == nil ? APIError.parsingJSONError : nil
+            return completion(contract, apiError)
+            //print("filtered: \(filteredAbiAction)")
+
+        }
+        task.resume()
+    }
+    
+    func renderContractsForActions(contracts: [Contract], actions: [Action]) throws -> [String]? {
+        
+        var arrayOfContracts: [String] = []
+        do {
+            try actions.forEach { action in
+                let contract = contracts.filter({ $0.name == action.name && $0.account == action.account }).first?.ricardianContract
+                let editOutPlaceholdersContract = contract?.replacingOccurrences(of: "{{", with: "").replacingOccurrences(of: "}}", with: "")
+                guard let validContractText = editOutPlaceholdersContract else { throw APIError.parsingStringError }
+                arrayOfContracts.append(validContractText)
+            }
+        } catch {
+            throw APIError.parsingStringError
+        }
+        return arrayOfContracts
     }
     
     

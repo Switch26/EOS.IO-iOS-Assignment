@@ -12,11 +12,11 @@
 		7045492A210C9C520055475A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70454929210C9C520055475A /* Assets.xcassets */; };
 		7045492D210C9C520055475A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7045492B210C9C520055475A /* LaunchScreen.storyboard */; };
 		70454938210C9C520055475A /* GetEOSBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454937210C9C520055475A /* GetEOSBlockTests.swift */; };
-		70454944210C9F5A0055475A /* EOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454943210C9F5A0055475A /* EOSAPI.swift */; };
 		70454946210CACD90055475A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454945210CACD90055475A /* ViewController.swift */; };
 		70454948210CC6550055475A /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454947210CC6550055475A /* CustomDateFormatter.swift */; };
 		7045494A210DF32F0055475A /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454949210DF32F0055475A /* Chain.swift */; };
 		7045494D210DF35A0055475A /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7045494C210DF35A0055475A /* Block.swift */; };
+		70454953210E04600055475A /* EOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70454943210C9F5A0055475A /* EOSAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,10 +227,10 @@
 			files = (
 				7045494A210DF32F0055475A /* Chain.swift in Sources */,
 				70454946210CACD90055475A /* ViewController.swift in Sources */,
+				70454953210E04600055475A /* EOSAPI.swift in Sources */,
 				70454948210CC6550055475A /* CustomDateFormatter.swift in Sources */,
 				7045494D210DF35A0055475A /* Block.swift in Sources */,
 				70454923210C9C4F0055475A /* AppDelegate.swift in Sources */,
-				70454944210C9F5A0055475A /* EOSAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

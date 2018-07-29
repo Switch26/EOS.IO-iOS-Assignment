@@ -187,24 +187,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Pzf-Qo-cw1">
-                                <rect key="frame" x="16" y="80" width="343" height="42.5"/>
+                                <rect key="frame" x="16" y="96" width="343" height="43"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSK-Sl-cCb">
-                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="42.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="95" height="43"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="36"/>
                                         <color key="textColor" red="0.049734666150733346" green="0.097953430709041292" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="#8157990" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyT-0V-71q">
-                                        <rect key="frame" x="103.5" y="0.0" width="239.5" height="42.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
+                                        <rect key="frame" x="111" y="0.0" width="232" height="43"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="36"/>
                                         <color key="textColor" red="0.049734666150733346" green="0.097953430709041292" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gpJ-HT-bvv">
-                                <rect key="frame" x="16" y="130" width="343" height="521"/>
+                                <rect key="frame" x="12" y="175" width="351" height="476"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -213,13 +213,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hOy-qU-d7l" firstAttribute="trailing" secondItem="gpJ-HT-bvv" secondAttribute="trailing" constant="16" id="58Q-zo-KTf"/>
+                            <constraint firstItem="hOy-qU-d7l" firstAttribute="trailing" secondItem="gpJ-HT-bvv" secondAttribute="trailing" constant="12" id="58Q-zo-KTf"/>
                             <constraint firstItem="Pzf-Qo-cw1" firstAttribute="leading" secondItem="hOy-qU-d7l" secondAttribute="leading" constant="16" id="AcP-sk-MRl"/>
                             <constraint firstItem="hOy-qU-d7l" firstAttribute="trailing" secondItem="Pzf-Qo-cw1" secondAttribute="trailing" constant="16" id="GGT-xu-H2F"/>
-                            <constraint firstItem="gpJ-HT-bvv" firstAttribute="top" secondItem="Pzf-Qo-cw1" secondAttribute="bottom" constant="8" id="GU1-YL-Msk"/>
-                            <constraint firstItem="gpJ-HT-bvv" firstAttribute="leading" secondItem="hOy-qU-d7l" secondAttribute="leading" constant="16" id="QB1-3d-bFD"/>
+                            <constraint firstItem="gpJ-HT-bvv" firstAttribute="top" secondItem="Pzf-Qo-cw1" secondAttribute="bottom" constant="36" id="GU1-YL-Msk"/>
+                            <constraint firstItem="gpJ-HT-bvv" firstAttribute="leading" secondItem="hOy-qU-d7l" secondAttribute="leading" constant="12" id="QB1-3d-bFD"/>
                             <constraint firstItem="hOy-qU-d7l" firstAttribute="bottom" secondItem="gpJ-HT-bvv" secondAttribute="bottom" constant="16" id="UZW-LJ-Q8v"/>
-                            <constraint firstItem="Pzf-Qo-cw1" firstAttribute="top" secondItem="hOy-qU-d7l" secondAttribute="top" constant="16" id="aZB-cw-uiP"/>
+                            <constraint firstItem="Pzf-Qo-cw1" firstAttribute="top" secondItem="hOy-qU-d7l" secondAttribute="top" constant="32" id="aZB-cw-uiP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hOy-qU-d7l"/>
                     </view>

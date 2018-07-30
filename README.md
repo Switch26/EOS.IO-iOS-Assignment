@@ -13,6 +13,10 @@ Your javascript implementation of Recardian Contract lookup was SUPER helpful.
 
 It was a pleasure working on this little exersise. Thank you for giving me an opportunity. Go EOS! 
 
-
+## Screenshots
+![screenshot1](/Screenshots/screen1.png "screenshot1")
+![screenshot2](/Screenshots/screen2.png "screenshot2")
+![screenshot3](/Screenshots/screen3.png "screenshot3")
+![screenshot4](/Screenshots/screen4.png "screenshot4")
 
 

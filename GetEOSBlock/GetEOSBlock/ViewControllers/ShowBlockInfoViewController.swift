@@ -18,8 +18,12 @@ class ShowBlockInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.blockDetailsTextView.text = ""
+        self.blockNumberLabel.layer.cornerRadius = 4
+        self.blockNumberLabel.layer.borderWidth = 2
+        self.blockNumberLabel.layer.borderColor = UIColor.darkGray.cgColor
+        
         if let validBlock = self.block {
-            self.blockNumberLabel.text = "#" + "\(validBlock.blockNum)"
+            self.blockNumberLabel.text = "Block #" + "\(validBlock.blockNum)"
             self.blockDetailsTextView.text = self.prepareStringDescription(forBlock: validBlock)
         }
     }

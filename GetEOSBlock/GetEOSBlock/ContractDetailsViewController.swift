@@ -23,6 +23,7 @@ class ContractDetailsViewController: UIViewController {
         
         self.checkButton.layer.cornerRadius = 4
         self.contractTextView.text = ""
+        self.transactionEntryField.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     override func viewDidAppear(_ animated: Bool) {
